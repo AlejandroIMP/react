@@ -24,6 +24,13 @@ const FollowMouse = () => {
     }
   }, [enabled])
 
+  useEffect(() => {
+    document.body.classList.toggle('no-cursor', enabled)
+
+    return () => {
+      document.body.classList.remove('no-cursor')
+    }
+  }, [enabled])
 
 return (
   <>
@@ -35,8 +42,8 @@ return (
       pointerEvents: 'none',
       left: -20,
       top: -20,
-      width: 40,
-      height: 40,
+      width: 20,
+      height: 20,
       transform: `translate(${position.x}px, ${position.y}px)`,
     }}>
     </div><button onClick={() => setEnabled(!enabled)}>
